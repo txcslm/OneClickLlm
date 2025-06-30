@@ -15,6 +15,8 @@ namespace OneClickLlm.AvaloniaUI.Presenters;
 public partial class MainWindowPresenter : PresenterBase
 {
     private readonly ILlmService _llmService;
+    private readonly ChatLogService _chatLogService;
+    private readonly string _conversationId = DateTime.Now.ToString("yyyyMMdd_HHmmss");
     public event Action? OpenModelSelectionRequested;
     public event Action? OpenSettingsRequested;
 
@@ -31,9 +33,10 @@ public partial class MainWindowPresenter : PresenterBase
     [NotifyCanExecuteChangedFor(nameof(SendMessageCommand))]
     private bool _isBusy;
 
-    public MainWindowPresenter(ILlmService llmService)
+    public MainWindowPresenter(ILlmService llmService, ChatLogService chatLogService)
     {
         _llmService = llmService;
+        _chatLogService = chatLogService;
         UpdateModelStatus();
     }
 
@@ -73,6 +76,7 @@ public partial class MainWindowPresenter : PresenterBase
         finally
         {
             IsBusy = false;
+            await _chatLogService.SaveAsync(_conversationId, ChatHistory);
         }
     }
 
