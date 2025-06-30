@@ -637,6 +637,9 @@
       "OneClickLlm.Cores/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Avalonia.Controls.ColorPicker": "11.3.2"
+        },
         "compile": {
           "bin/placeholder/OneClickLlm.Cores.dll": {}
         },
@@ -1581,6 +1584,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Avalonia >= 11.3.2",
+      "Avalonia.Controls.ColorPicker >= 11.3.2",
       "Avalonia.Desktop >= 11.3.2",
       "Avalonia.Diagnostics >= 11.3.2",
       "Avalonia.Fonts.Inter >= 11.3.2",
@@ -1638,6 +1642,10 @@
         "targetAlias": "net9.0",
         "dependencies": {
           "Avalonia": {
+            "target": "Package",
+            "version": "[11.3.2, )"
+          },
+          "Avalonia.Controls.ColorPicker": {
             "target": "Package",
             "version": "[11.3.2, )"
           },
