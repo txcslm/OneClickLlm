@@ -23,10 +23,12 @@ public static class AppServices
     // Регистрация Presenter'ов
     services.AddSingleton<MainWindowPresenter>();
     services.AddTransient<ModelSelectionPresenter>(); // Transient, т.к. создается при каждом открытии окна
+    services.AddTransient<SettingsPresenter>();
         
     // Регистрация Views (Окон/Контролов)
     services.AddTransient<MainWindow>();
     services.AddTransient<ModelSelectionView>();
+    services.AddTransient<SettingsView>();
 
     Services = services.BuildServiceProvider();
   }

@@ -16,7 +16,7 @@ public partial class App : Application
     AvaloniaXamlLoader.Load(this);
   }
 
-  public override void OnFrameworkInitializationCompleted()
+  public override async void OnFrameworkInitializationCompleted()
   {
     // Configure dependency injection services
     AppServices.Configure();
@@ -55,7 +55,54 @@ public partial class App : Application
         }
       };
 
-      desktop.MainWindow = mainWindow;
+      mainPresenter.OpenSettingsRequested += () =>
+      {
+        var settingsPresenter = AppServices.Services.GetRequiredService<SettingsPresenter>();
+        var settingsView = new SettingsView { DataContext = settingsPresenter };
+
+        var dialog = new Window
+        {
+          Title = "Настройки",
+          Content = settingsView,
+          Width = 400,
+          Height = 300,
+          WindowStartupLocation = WindowStartupLocation.CenterOwner
+        };
+
+        settingsPresenter.CloseRequested += () => dialog.Close();
+        dialog.ShowDialog(mainWindow);
+      };
+
+      var startPresenter = AppServices.Services.GetRequiredService<ModelSelectionPresenter>();
+      var startView = new ModelSelectionView { DataContext = startPresenter };
+      var startWindow = new Window
+      {
+        Title = "Выбор модели",
+        Content = startView,
+        Width = 600,
+        Height = 450,
+        WindowStartupLocation = WindowStartupLocation.CenterScreen
+      };
+
+      startPresenter.CloseRequested += result =>
+      {
+        if (result == true)
+        {
+          mainPresenter.UpdateModelStatus();
+          desktop.MainWindow = mainWindow;
+          mainWindow.Show();
+        }
+        else
+        {
+          desktop.Shutdown();
+        }
+
+        startWindow.Close();
+      };
+
+      await startPresenter.LoadModelsAsync();
+
+      desktop.MainWindow = startWindow;
     }
 
     base.OnFrameworkInitializationCompleted();
