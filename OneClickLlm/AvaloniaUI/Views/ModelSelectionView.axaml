@@ -4,10 +4,10 @@
              xmlns:services="clr-namespace:OneClickLlm.Core.Services;assembly=OneClickLlm.Cores"
              xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
              x:Class="OneClickLlm.AvaloniaUI.Views.ModelSelectionView" x:DataType="presenters:ModelSelectionPresenter">
-    <Grid Margin="15" RowDefinitions="Auto,*,Auto">
-        <TextBlock Grid.Row="0" Text="Управление моделями" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
-
-        <ListBox Grid.Row="1" ItemsSource="{Binding LocalModels}" SelectedItem="{Binding SelectedModel}">
+    <Grid Margin="15" RowDefinitions="Auto,Auto,*,Auto">
+        <TextBlock Grid.Row="0" Text="Управление моделями" FontSize="18" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBlock Grid.Row="1" Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,10"/>
+        <ListBox Grid.Row="2" ItemsSource="{Binding LocalModels}" SelectedItem="{Binding SelectedModel}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="services:ModelInfo">
                     <Border Padding="10" BorderBrush="Gainsboro" BorderThickness="0,0,0,1">
@@ -21,7 +21,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,15,0,0">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,15,0,0">
             <Button Content="Загрузить новую..." Command="{Binding DownloadModelCommand}"/>
             <Button Content="Удалить выбранную" Command="{Binding DeleteSelectedModelCommand}"/>
             <Button Content="Выбрать и закрыть" Command="{Binding ConfirmSelectionCommand}" FontWeight="Bold" IsDefault="True"/>
