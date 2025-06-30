@@ -61,7 +61,10 @@ namespace OneClickLlm.Core.Services
             };
             
             using var jsonContent = new StringContent(JsonSerializer.Serialize(request, _jsonSerializerOptions), Encoding.UTF8, "application/json");
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, "/api/chat") { Content = jsonContent };
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Post, "/api/chat")
+            {
+                Content = jsonContent
+            };
 
             using var response = await _httpClient.SendAsync(httpRequest, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
             response.EnsureSuccessStatusCode();
