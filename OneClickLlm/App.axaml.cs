@@ -19,12 +19,14 @@ public partial class App : Application
   public override async void OnFrameworkInitializationCompleted()
   {
     // Configure dependency injection services
+    Console.WriteLine("Initializing application...");
     AppServices.Configure();
     if (AppServices.Services is null)
       return;
 
     if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
     {
+      Console.WriteLine("Creating main window");
       var mainPresenter = AppServices.Services.GetRequiredService<MainWindowPresenter>();
       var mainWindow = AppServices.Services.GetRequiredService<MainWindow>();
 
@@ -100,9 +102,11 @@ public partial class App : Application
         startWindow.Close();
       };
 
+      Console.WriteLine("Loading models for start window");
       await startPresenter.LoadModelsAsync();
 
       desktop.MainWindow = startWindow;
+      Console.WriteLine("Initialization completed");
     }
 
     base.OnFrameworkInitializationCompleted();
