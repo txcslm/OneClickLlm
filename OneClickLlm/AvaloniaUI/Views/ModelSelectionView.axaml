@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:core="using:OneClickLlm.Core.Services"
              xmlns:services="clr-namespace:OneClickLlm.Core.Services;assembly=OneClickLlm.Cores"
-             x:Class="OneClickLlm.AvaloniaUI.Views.ModelSelectionView">
+             xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
+             x:Class="OneClickLlm.AvaloniaUI.Views.ModelSelectionView" x:DataType="presenters:ModelSelectionPresenter">
     <Grid Margin="15" RowDefinitions="Auto,*,Auto">
         <TextBlock Grid.Row="0" Text="Управление моделями" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
