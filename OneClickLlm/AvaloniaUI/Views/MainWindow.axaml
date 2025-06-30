@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:core="using:OneClickLlm.Core.Services"
-        xmlns:presenters="clr-namespace:OneClickLlm.AvaloniaUI.Presenters"
+        xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="OneClickLlm.AvaloniaUI.Views.MainWindow" x:DataType="presenters:MainWindowPresenter"
         Icon="/Assets/avalonia-logo.ico"
@@ -21,7 +21,7 @@
         </Border>
 
         <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*,Auto" Gap="10" Margin="0,10,0,0">
-            <TextBox Grid.Column="0" Text="{Binding PromptText}" Watermark="Введите ваш запрос..." AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="120" IsEnabled="{Binding !IsBusy}"/>
+            <TextBox Grid.Column="0" Text="{Binding PromptText}" Watermark="Введите ваш запрос..." AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="120" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}"/>
             <Button Grid.Column="1" Content="Отправить" Command="{Binding SendMessageCommand}" VerticalAlignment="Bottom" Padding="20,10"/>
         </Grid>
 

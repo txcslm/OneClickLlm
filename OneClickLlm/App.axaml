@@ -11,5 +11,6 @@
     <Application.Resources>
         <conv:RoleToAlignmentConverter x:Key="RoleToAlignmentConverter"/>
         <conv:RoleToColorConverter x:Key="RoleToColorConverter"/>
+        <conv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     </Application.Resources>
 </Application>
