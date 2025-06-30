@@ -22,7 +22,6 @@ public partial class ModelSelectionPresenter : PresenterBase
 
     [ObservableProperty]
     private string? _errorMessage;
-
     public ModelSelectionPresenter(ILlmService llmService, IFilePickerService filePicker)
     {
         _llmService = llmService;
