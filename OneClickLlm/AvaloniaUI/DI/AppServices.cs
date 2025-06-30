@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using OneClickLlm.AvaloniaUI.Presenters;
 using OneClickLlm.AvaloniaUI.Views;
+using OneClickLlm.AvaloniaUI.Services;
 using OneClickLlm.Core.Services;
 
 namespace OneClickLlm.AvaloniaUI;
@@ -17,6 +18,7 @@ public static class AppServices
     // Core services
     services.AddSingleton<ILlmService, LocalLlamaSharpService>();
     services.AddSingleton<ChatLogService>();
+    services.AddSingleton<IFilePickerService, FilePickerService>();
         
     // Регистрация Presenter'ов
     services.AddSingleton<MainWindowPresenter>();

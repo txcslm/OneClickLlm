@@ -42,7 +42,7 @@ public class LocalLlamaSharpService : ILlmService
     {
         if (_session == null)
             throw new InvalidOperationException("Model not loaded");
-            
+
         var chatHistory = new ChatHistory();
         foreach (var msg in history)
         {
