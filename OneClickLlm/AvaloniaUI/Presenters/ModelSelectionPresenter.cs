@@ -23,6 +23,9 @@ public partial class ModelSelectionPresenter : PresenterBase
     [NotifyCanExecuteChangedFor(nameof(DeleteSelectedModelCommand))]
     [NotifyCanExecuteChangedFor(nameof(ConfirmSelectionCommand))]
     private ModelInfo? _selectedModel;
+
+    [ObservableProperty]
+    private string? _errorMessage;
     
     public ModelSelectionPresenter(IModelManager modelManager, ILlmService llmService)
     {
@@ -40,8 +43,7 @@ public partial class ModelSelectionPresenter : PresenterBase
         catch(Exception ex)
         {
             // Обработка ошибки, если Ollama не запущен
-            Console.WriteLine($"Error loading models: {ex.Message}");
-            // Можно показать диалоговое окно с ошибкой пользователю
+            ErrorMessage = $"Error loading models: {ex.Message}";
         }
     }
 
