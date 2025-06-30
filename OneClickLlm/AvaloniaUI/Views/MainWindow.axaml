@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:core="using:OneClickLlm.Core.Services"
         xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
+        xmlns:views="using:OneClickLlm.AvaloniaUI.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="OneClickLlm.AvaloniaUI.Views.MainWindow" x:DataType="presenters:MainWindowPresenter"
         Icon=""
@@ -31,10 +32,10 @@
                     <DataTemplate DataType="core:ChatMessage">
                         <Border CornerRadius="8" Padding="10" Margin="5"
                                 HorizontalAlignment="{Binding Role, Converter={StaticResource RoleToAlignmentConverter}}"
-                                Background="{Binding DataContext.MessageBackgroundColor, RelativeSource={RelativeSource AncestorType=Window}}">
+                                Background="{Binding DataContext.MessageBackgroundColor, RelativeSource={RelativeSource AncestorType=views:MainWindow}}">
                             <TextBlock Text="{Binding Content}"
                                        TextWrapping="Wrap"
-                                       Foreground="{Binding DataContext.MessageTextColor, RelativeSource={RelativeSource AncestorType=Window}}" />
+                                       Foreground="{Binding DataContext.MessageTextColor, RelativeSource={RelativeSource AncestorType=views:MainWindow}}" />
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
