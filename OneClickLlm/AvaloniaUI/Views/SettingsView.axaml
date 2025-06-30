@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
+             xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.ColorPicker"
+             x:Class="OneClickLlm.AvaloniaUI.Views.SettingsView"
+             x:DataType="presenters:SettingsPresenter">
+    <Grid Margin="15" RowDefinitions="Auto,Auto,Auto">
+        <StackPanel>
+            <TextBlock Text="Цвет текста" Margin="0,0,0,5"/>
+            <controls:ColorPicker SelectedColor="{Binding MessageTextColor}" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0,10,0,0">
+            <TextBlock Text="Цвет фона" Margin="0,0,0,5"/>
+            <controls:ColorPicker SelectedColor="{Binding MessageBackgroundColor}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,15,0,0">
+            <Button Content="ОК" Command="{Binding ConfirmCommand}" IsDefault="True"/>
+            <Button Content="Отмена" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

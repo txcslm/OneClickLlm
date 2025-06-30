@@ -31,8 +31,10 @@
                     <DataTemplate DataType="core:ChatMessage">
                         <Border CornerRadius="8" Padding="10" Margin="5"
                                 HorizontalAlignment="{Binding Role, Converter={StaticResource RoleToAlignmentConverter}}"
-                                Background="{Binding Role, Converter={StaticResource RoleToColorConverter}}">
-                            <TextBlock Text="{Binding Content}" TextWrapping="Wrap" />
+                                Background="{Binding DataContext.MessageBackgroundColor, RelativeSource={RelativeSource AncestorType=Window}}">
+                            <TextBlock Text="{Binding Content}"
+                                       TextWrapping="Wrap"
+                                       Foreground="{Binding DataContext.MessageTextColor, RelativeSource={RelativeSource AncestorType=Window}}" />
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

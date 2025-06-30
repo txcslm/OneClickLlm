@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OneClickLlm.Core.Services;
@@ -30,6 +31,12 @@ public partial class MainWindowPresenter : PresenterBase
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(SendMessageCommand))]
     private bool _isBusy;
+
+    [ObservableProperty]
+    private Color _messageTextColor = Colors.Black;
+
+    [ObservableProperty]
+    private Color _messageBackgroundColor = Colors.LightGray;
 
     public MainWindowPresenter(ILlmService llmService)
     {
