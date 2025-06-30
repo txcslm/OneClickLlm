@@ -6,7 +6,7 @@
         xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="OneClickLlm.AvaloniaUI.Views.MainWindow" x:DataType="presenters:MainWindowPresenter"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon=""
         Title="OneClick LLM"
         WindowStartupLocation="CenterScreen">
     
