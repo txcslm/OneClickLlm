@@ -45,7 +45,6 @@ public partial class App : Application
         };
 
         modelSelectionPresenter.CloseRequested += result => dialog.Close(result);
-        await modelSelectionPresenter.LoadModelsAsync();
 
         var result = await dialog.ShowDialog<bool?>(mainWindow);
 
