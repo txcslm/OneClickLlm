@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace OneClickLlm.Cores.Infrastructure.Services
+namespace OneClickLlm.Core.Services
 {
     /// <summary>
     /// Управляет языковыми моделями, взаимодействуя с локальным API Ollama.
