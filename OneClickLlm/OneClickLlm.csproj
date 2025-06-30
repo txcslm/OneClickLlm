@@ -19,7 +19,12 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+        <PackageReference Include="Llamas" Version="0.1.1" />
+        <PackageReference Include="Llamas.Abstractions" Version="0.1.1" />
+        <PackageReference Include="LLamaSharp" Version="0.24.0" />
+        <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.24.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0-preview.5.25277.114" />
+        <PackageReference Include="OllamaSharp" Version="5.2.3" />
     </ItemGroup>
 
     <ItemGroup>
