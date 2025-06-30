@@ -1,6 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Net.Http;
 using OneClickLlm.AvaloniaUI.Presenters;
 using OneClickLlm.AvaloniaUI.Views;
 using OneClickLlm.Core.Services;
@@ -15,10 +14,9 @@ public static class AppServices
   {
     var services = new ServiceCollection();
 
-    // Регистрация сервисов (Core)
-    services.AddSingleton(new HttpClient { BaseAddress = new Uri("http://localhost:11434") });
-    services.AddSingleton<IModelManager, LocalModelManager>();
-    services.AddSingleton<ILlmService, OllamaLlmService>();
+    // Core services
+    services.AddSingleton<ILlmService, LocalLlamaSharpService>();
+    services.AddSingleton<ChatLogService>();
         
     // Регистрация Presenter'ов
     services.AddSingleton<MainWindowPresenter>();

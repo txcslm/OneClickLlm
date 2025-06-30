@@ -1,30 +1,13 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:core="using:OneClickLlm.Core.Services"
-             xmlns:services="clr-namespace:OneClickLlm.Core.Services;assembly=OneClickLlm.Cores"
              xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
              x:Class="OneClickLlm.AvaloniaUI.Views.ModelSelectionView" x:DataType="presenters:ModelSelectionPresenter">
-    <Grid Margin="15" RowDefinitions="Auto,Auto,*,Auto">
-        <TextBlock Grid.Row="0" Text="Управление моделями" FontSize="18" FontWeight="Bold" Margin="0,0,0,5"/>
-        <TextBlock Grid.Row="1" Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,10"/>
-        <ListBox Grid.Row="2" ItemsSource="{Binding LocalModels}" SelectedItem="{Binding SelectedModel}">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="services:ModelInfo">
-                    <Border Padding="10" BorderBrush="Gainsboro" BorderThickness="0,0,0,1">
-                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
-                            <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding DisplayName}" FontWeight="SemiBold"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding SizeGb, StringFormat='{}{0:F2} GB'}" Foreground="Gray"/>
-                            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Description}" TextWrapping="Wrap" FontSize="12" />
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,15,0,0">
-            <Button Content="Загрузить новую..." Command="{Binding DownloadModelCommand}"/>
-            <Button Content="Удалить выбранную" Command="{Binding DeleteSelectedModelCommand}"/>
-            <Button Content="Выбрать и закрыть" Command="{Binding ConfirmSelectionCommand}" FontWeight="Bold" IsDefault="True"/>
+    <StackPanel Margin="15" Spacing="10">
+        <TextBlock Text="Путь к GGUF модели" FontSize="18" FontWeight="Bold"/>
+        <TextBox Text="{Binding ModelPath}" Width="400"/>
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,10,0,0">
+            <Button Content="Загрузить" Command="{Binding ConfirmSelectionCommand}" FontWeight="Bold" IsDefault="True"/>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </UserControl>
