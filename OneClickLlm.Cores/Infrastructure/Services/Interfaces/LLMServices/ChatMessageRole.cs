@@ -1,4 +1,4 @@
-namespace OneClickLlm.Cores.Infrastructure.Services;
+namespace OneClickLlm.Core.Services;
 
 /// <summary>
 ///   Роль автора в диалоговом сообщении.

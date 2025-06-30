@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using OneClickLlm.Cores.Infrastructure.Services;
+using OneClickLlm.Core.Services;
 
 namespace OneClickLlm.Core.Services
 {

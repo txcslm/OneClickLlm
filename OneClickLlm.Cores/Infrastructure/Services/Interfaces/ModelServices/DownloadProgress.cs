@@ -1,4 +1,4 @@
-namespace OneClickLlm.Cores.Infrastructure.Services;
+namespace OneClickLlm.Core.Services;
 
 /// <summary>
 /// Представляет состояние прогресса загрузки файла.

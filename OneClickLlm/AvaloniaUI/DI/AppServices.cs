@@ -4,7 +4,6 @@ using System.Net.Http;
 using OneClickLlm.AvaloniaUI.Presenters;
 using OneClickLlm.AvaloniaUI.Views;
 using OneClickLlm.Core.Services;
-using OneClickLlm.Cores.Infrastructure.Services;
 
 namespace OneClickLlm.AvaloniaUI;
 

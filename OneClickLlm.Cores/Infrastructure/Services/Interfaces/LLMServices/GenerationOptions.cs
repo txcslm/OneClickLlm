@@ -1,4 +1,4 @@
-namespace OneClickLlm.Cores.Infrastructure.Services;
+namespace OneClickLlm.Core.Services;
 
 /// <summary>
 ///   Представляет настраиваемые параметры для процесса генерации текста.
