@@ -34,6 +34,7 @@ public partial class App : Application
       {
         var modelSelectionPresenter = AppServices.Services.GetRequiredService<ModelSelectionPresenter>();
         var modelSelectionView = new ModelSelectionView { DataContext = modelSelectionPresenter };
+        modelSelectionView.BrowseModelRequested += modelSelectionPresenter.BrowseModelAsync;
 
         var dialog = new Window
         {

@@ -9,12 +9,12 @@ namespace OneClickLlm.Core.Services
     /// <summary>
     /// Предоставляет сервис для взаимодействия с LLM через API Ollama.
     /// </summary>
-    public class OllamaLlmService : ILlmService
+    public class OllamaLanguageModelService : ILanguageModelService
     {
         private readonly HttpClient _httpClient;
         private static readonly JsonSerializerOptions _jsonSerializerOptions = new() { PropertyNameCaseInsensitive = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
-        public OllamaLlmService(HttpClient httpClient) => _httpClient = httpClient;
+        public OllamaLanguageModelService(HttpClient httpClient) => _httpClient = httpClient;
         
         public ModelInfo? CurrentModel { get; private set; }
 

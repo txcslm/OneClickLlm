@@ -5,16 +5,13 @@ namespace OneClickLlm.AvaloniaUI.Views;
 
 public partial class ModelSelectionView : UserControl
 {
-  public ModelSelectionView()
-  {
-    InitializeComponent();
-  }
+    public event Func<Window, Task>? BrowseModelRequested;
 
-  private async void BrowseButton_Click(object? sender, RoutedEventArgs e)
-  {
-    if (DataContext is Presenters.ModelSelectionPresenter presenter && VisualRoot is Window window)
+    public ModelSelectionView() => InitializeComponent();
+
+    private async void BrowseButton_Click(object? sender, RoutedEventArgs e)
     {
-      await presenter.BrowseForModelAsync(window);
+        if (VisualRoot is Window window && BrowseModelRequested is not null)
+            await BrowseModelRequested.Invoke(window);
     }
-  }
 }

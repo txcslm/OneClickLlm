@@ -13,35 +13,36 @@ namespace OneClickLlm.AvaloniaUI.Presenters;
 /// </summary>
 public partial class ModelSelectionPresenter : PresenterBase
 {
-    private readonly ILlmService _llmService;
-    private readonly IFilePickerService _filePicker;
+    private readonly ILanguageModelService _languageModelService;
+    private readonly IFilePickerService _filePickerService;
     public event Action<bool?>? CloseRequested;
 
     [ObservableProperty]
-    private string _modelPath = string.Empty;
+    private string _selectedModelPath = string.Empty;
 
     [ObservableProperty]
     private string? _errorMessage;
-    public ModelSelectionPresenter(ILlmService llmService, IFilePickerService filePicker)
+    public ModelSelectionPresenter(ILanguageModelService languageModelService, IFilePickerService filePickerService)
     {
-        _llmService = llmService;
-        _filePicker = filePicker;
+        _languageModelService = languageModelService;
+        _filePickerService = filePickerService;
     }
 
-    public async Task BrowseForModelAsync(Window owner)
+    [RelayCommand]
+    public async Task BrowseModelAsync(Window owner)
     {
-        var path = await _filePicker.OpenFileAsync(owner, "Выберите GGUF модель", "gguf");
+        var path = await _filePickerService.OpenFileAsync(owner, "Выберите GGUF модель", "gguf");
         if (!string.IsNullOrWhiteSpace(path))
-            ModelPath = path;
+            SelectedModelPath = path;
     }
 
     [RelayCommand]
     private async Task ConfirmSelectionAsync()
     {
-        if (string.IsNullOrWhiteSpace(ModelPath)) return;
+        if (string.IsNullOrWhiteSpace(SelectedModelPath)) return;
         try
         {
-            await _llmService.LoadModelAsync(ModelPath);
+            await _languageModelService.LoadModelAsync(SelectedModelPath);
             CloseRequested?.Invoke(true);
         }
         catch (Exception ex)
