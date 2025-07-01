@@ -17,9 +17,9 @@ public class ChatHistoryService
 
     public ChatHistoryService() => Directory.CreateDirectory(_storagePath);
 
-    public async Task SaveAsync(string conversationId, IEnumerable<ChatMessage> messages)
+    public async Task SaveAsync(string sessionId, IEnumerable<ChatMessage> messages)
     {
-        var filePath = Path.Combine(_storagePath, $"{conversationId}.log");
+        var filePath = Path.Combine(_storagePath, $"{sessionId}.log");
         var json = JsonSerializer.Serialize(messages);
         using var aes = Aes.Create();
         aes.Key = _encryptionKey;
