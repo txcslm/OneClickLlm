@@ -3,7 +3,7 @@ namespace OneClickLlm.Core.Services;
 /// <summary>
 ///   Определяет контракт для сервиса, непосредственно взаимодействующего с языковой моделью.
 /// </summary>
-public interface ILlmService
+public interface ILanguageModelService
 {
   /// <summary>
   ///   Получает информацию о модели, которая в данный момент загружена и готова к использованию.

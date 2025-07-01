@@ -14,9 +14,9 @@ namespace OneClickLlm.AvaloniaUI.Presenters;
 /// </summary>
 public partial class MainWindowPresenter : PresenterBase
 {
-    private readonly ILlmService _llmService;
-    private readonly ChatLogService _chatLogService;
-    private readonly string _conversationId = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+    private readonly ILanguageModelService _languageModelService;
+    private readonly ChatHistoryService _historyStorage;
+    private readonly string _sessionId = DateTime.Now.ToString("yyyyMMdd_HHmmss");
     public event Action? OpenModelSelectionRequested;
     public event Action? OpenSettingsRequested;
 
@@ -33,17 +33,17 @@ public partial class MainWindowPresenter : PresenterBase
     [NotifyCanExecuteChangedFor(nameof(SendMessageCommand))]
     private bool _isBusy;
 
-    public MainWindowPresenter(ILlmService llmService, ChatLogService chatLogService)
+    public MainWindowPresenter(ILanguageModelService languageModelService, ChatHistoryService historyStorage)
     {
-        _llmService = llmService;
-        _chatLogService = chatLogService;
+        _languageModelService = languageModelService;
+        _historyStorage = historyStorage;
         UpdateModelStatus();
     }
 
     [RelayCommand(CanExecute = nameof(CanSendMessage))]
     private async Task SendMessageAsync()
     {
-        if (string.IsNullOrWhiteSpace(PromptText) || _llmService.CurrentModel is null) return;
+        if (string.IsNullOrWhiteSpace(PromptText) || _languageModelService.CurrentModel is null) return;
 
         IsBusy = true;
         var userPrompt = PromptText;
@@ -62,7 +62,7 @@ public partial class MainWindowPresenter : PresenterBase
             // Здесь мы используем дефолтные опции генерации. В реальном приложении они бы брались из настроек.
             var options = new GenerationOptions(Temperature: 0.7f, TopP: 0.9f);
             
-            await foreach (var token in _llmService.GenerateResponseStreamAsync(userPrompt, history, options))
+            await foreach (var token in _languageModelService.GenerateResponseStreamAsync(userPrompt, history, options))
             {
                 fullResponse.Append(token);
                 // Обновляем последний элемент в коллекции, чтобы избежать мерцания UI
@@ -76,11 +76,11 @@ public partial class MainWindowPresenter : PresenterBase
         finally
         {
             IsBusy = false;
-            await _chatLogService.SaveAsync(_conversationId, ChatHistory);
+            await _historyStorage.SaveAsync(_sessionId, ChatHistory);
         }
     }
 
-    private bool CanSendMessage() => !IsBusy && !string.IsNullOrWhiteSpace(PromptText) && _llmService.CurrentModel != null;
+    private bool CanSendMessage() => !IsBusy && !string.IsNullOrWhiteSpace(PromptText) && _languageModelService.CurrentModel != null;
 
     [RelayCommand]
     private void OpenModelSelection() => OpenModelSelectionRequested?.Invoke();
@@ -90,8 +90,8 @@ public partial class MainWindowPresenter : PresenterBase
 
     public void UpdateModelStatus()
     {
-        CurrentModelStatus = _llmService.CurrentModel != null
-            ? $"Модель: {_llmService.CurrentModel.DisplayName}"
+        CurrentModelStatus = _languageModelService.CurrentModel != null
+            ? $"Модель: {_languageModelService.CurrentModel.DisplayName}"
             : "Модель не загружена";
         SendMessageCommand.NotifyCanExecuteChanged();
     }
