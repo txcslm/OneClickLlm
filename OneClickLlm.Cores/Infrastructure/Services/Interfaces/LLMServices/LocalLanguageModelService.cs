@@ -7,7 +7,7 @@ namespace OneClickLlm.Core.Services;
 /// <summary>
 /// Provides a local LLM service using LLamaSharp library.
 /// </summary>
-public class LocalLlamaSharpService : ILlmService
+public class LocalLanguageModelService : ILanguageModelService
 {
     private LLamaWeights? _weights;
     private LLamaContext? _context;

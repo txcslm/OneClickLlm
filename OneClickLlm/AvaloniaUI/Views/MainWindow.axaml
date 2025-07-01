@@ -3,9 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:core="using:OneClickLlm.Core.Services"
-        xmlns:presenters="using:OneClickLlm.AvaloniaUI.Presenters"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
-        x:Class="OneClickLlm.AvaloniaUI.Views.MainWindow" x:DataType="presenters:MainWindowPresenter"
+        x:Class="OneClickLlm.AvaloniaUI.Views.MainWindow"
         Icon=""
         Title="OneClick LLM"
         WindowStartupLocation="CenterScreen">

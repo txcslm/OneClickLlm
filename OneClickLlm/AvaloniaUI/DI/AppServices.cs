@@ -16,8 +16,8 @@ public static class AppServices
     var services = new ServiceCollection();
 
     // Core services
-    services.AddSingleton<ILlmService, LocalLlamaSharpService>();
-    services.AddSingleton<ChatLogService>();
+    services.AddSingleton<ILanguageModelService, LocalLanguageModelService>();
+    services.AddSingleton<ChatHistoryService>();
     services.AddSingleton<IFilePickerService, FilePickerService>();
         
     // Регистрация Presenter'ов
