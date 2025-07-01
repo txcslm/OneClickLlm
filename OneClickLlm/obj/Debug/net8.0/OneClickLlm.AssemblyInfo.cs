@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OneClickLlm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e0817639c4e9d25ef39bf1c6c40fe3021db36c8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+029525e0f5e19d42fc10b7473e6f3d0e0c3cf9bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("OneClickLlm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OneClickLlm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

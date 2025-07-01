@@ -52,8 +52,7 @@ public class LocalLlamaSharpService : ILlmService
 
         var infer = new InferenceParams
         {
-            Temperature = options.Temperature ?? 0.8f,
-            TopP = options.TopP ?? 0.95f
+           
         };
 
         await foreach (var token in _session.ChatAsync(chatHistory, infer, cancellationToken))

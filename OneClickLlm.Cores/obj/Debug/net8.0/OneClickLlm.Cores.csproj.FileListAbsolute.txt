@@ -1,0 +1,13 @@
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.csproj.AssemblyReference.cache
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.GeneratedMSBuildEditorConfig.editorconfig
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.AssemblyInfoInputs.cache
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.AssemblyInfo.cs
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.csproj.CoreCompileInputs.cache
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.sourcelink.json
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/bin/Debug/net8.0/OneClickLlm.Cores.deps.json
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/bin/Debug/net8.0/OneClickLlm.Cores.dll
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/bin/Debug/net8.0/OneClickLlm.Cores.pdb
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.dll
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/refint/OneClickLlm.Cores.dll
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/OneClickLlm.Cores.pdb
+/Users/txcslm/~RIDER/OneClickLlm/OneClickLlm.Cores/obj/Debug/net8.0/ref/OneClickLlm.Cores.dll
